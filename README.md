@@ -18,7 +18,7 @@ The system is a freelance contract management and escrow platform that allows co
 
 ### 1. Requirements Table
 
-**File:** `SE_Lab1_Scenario53_Requirements_Table.xlsx`
+**File:** `Requirements_Table.xlsx`
 
 Contains exactly:
 
@@ -35,7 +35,7 @@ The requirements focus on deliverable submission, watermarking, client review, m
 
 ### 2. UML Use-Case Diagram
 
-**File:** `SE_Lab1_Scenario53_UML_Use_Case_Diagram.pdf`
+**File:** `Use_Case_Diagram.pdf`
 
 The diagram contains:
 
@@ -53,7 +53,7 @@ Key relationships include:
 
 ### 3. Use-Case Flow Specification
 
-**File:** `SE_Lab1_Scenario53_Use_Case_Flow.pdf`
+**File:** `Use_Case_Flow.pdf`
 
 The selected core use case is:
 
@@ -73,9 +73,9 @@ The document includes:
 SE-Lab-1/
 │
 ├── README.md
-├── SE_Lab1_Scenario53_Requirements_Table.xlsx
-├── SE_Lab1_Scenario53_UML_Use_Case_Diagram.pdf
-└── SE_Lab1_Scenario53_Use_Case_Flow.pdf
+├── Requirements_Table.xlsx
+├── Use_Case_Diagram.pdf
+└── Use_Case_Flow.pdf
 ```
 
 ## Submission
