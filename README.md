@@ -1,95 +1,99 @@
-# Software Engineering Lab 1 – Requirements Engineering & UML Use-Case Modelling
+# Scenario 16 — Hangman Challenge
 
-## Scenario #53 – Freelance Content Creator Escrow Platform
+A multi-round terminal word-guessing game with categories, hints, scoring, and streaks.
 
-This repository contains the completed deliverables for **Software Engineering Lab 1** based on Problem Statement #53.
+## Provided files
 
-### Scenario Overview
+- `main.py` — entry point.
+- `game.py` — round state, guesses, hints, scoring, and session flow.
+- `words.py` — in-memory word and hint data.
+- `stats.py` — session statistics support.
+- `requirements.txt` — dependency declaration.
 
-The system is a freelance contract management and escrow platform that allows content creators and sponsors to define deliverable milestones, submit and review watermarked draft media assets, and release secure milestone payments after sponsor approval.
+## Setup
 
-### Actors
-
-- **Content Creator** – Submits deliverables and receives milestone payments.
-- **Client Sponsor** – Reviews submitted deliverables and approves or rejects milestones.
-- **Escrow / Payment Service** – Handles the release of locked milestone payments after valid approval.
-
-## Deliverables
-
-### 1. Requirements Table
-
-**File:** `Requirements_Table.xlsx`
-
-Contains exactly:
-
-- 5 Functional Requirements: FR-001 to FR-005
-- 2 Non-Functional Requirements: NFR-001 to NFR-002
-- Requirement ID
-- Requirement Type
-- Description
-- Priority
-- Acceptance Criteria
-- Rationale
-
-The requirements focus on deliverable submission, watermarking, client review, milestone approval/rejection, and secure payment release.
-
-### 2. UML Use-Case Diagram
-
-**File:** `Use_Case_Diagram.pdf`
-
-The diagram contains:
-
-- All identified actors
-- Primary system use cases
-- System boundary
-- Actor associations
-- `«include»` relationship
-- `«extend»` relationship
-
-Key relationships include:
-
-- **Submit Deliverable** `«include»` **Apply Watermark**
-- **Request Revision** `«extend»` **Review Deliverable**
-
-### 3. Use-Case Flow Specification
-
-**File:** `Use_Case_Flow.pdf`
-
-The selected core use case is:
-
-**Approve Milestone and Release Payment**
-
-The document includes:
-
-- Actors
-- Preconditions
-- Main Success Scenario
-- Postconditions
-- Alternate Flow for deliverable rejection and revision
-
-## Repository Structure
-
-```text
-SE-Lab-1/
-│
-├── README.md
-├── Requirements_Table.xlsx
-├── Use_Case_Diagram.pdf
-└── Use_Case_Flow.pdf
+```bash
+python main.py
 ```
 
-## Submission
+## Before changing the code
 
-All three deliverables should be pushed to the **Lab-1 GitHub repository** as required by the Software Engineering Lab handout.
+Run several rounds and inspect how round state, score, guessed letters, and category
+selection are represented. Reproduce the Task 1 issue before modifying it.
 
-## Tools Used
+## Task 1 — Guess-state correctness
 
-- Microsoft Excel / compatible spreadsheet software – Requirements Table
-- Draw.io / UML diagramming tool – Use-Case Diagram
-- PDF export – Diagram and Use-Case Flow documents
+Correct repeated-guess handling so a previously attempted wrong letter cannot consume
+another life, and a previously accepted correct letter cannot be counted as a new guess.
 
-## Reference
+**Done when:** each distinct letter affects the round exactly once.
 
-**Problem Statement #53 – Freelance Content Creator Escrow Platform**
+## Task 2 — Complete the session model
 
-The problem statement requires exactly 5 Functional Requirements, 2 Non-Functional Requirements, a UML Use-Case Diagram containing actors and primary use cases with at least one `«include»` and one `«extend»` relationship, and a one-page Use-Case Flow Specification.
+Integrate the supplied session-statistics component so rounds played, rounds won, and
+best streak are tracked correctly across multiple rounds.
+
+**Done when:** starting a new round resets only round-specific state; session statistics
+continue across the whole run.
+
+## Task 3 — Difficulty and scoring
+
+Add difficulty choices that alter the available lives and scoring. Preserve category
+selection and make hint usage affect scoring consistently.
+
+**Done when:** difficulty changes round rules without leaking state between rounds.
+
+## Task 4 — Robust input and feedback
+
+Improve command handling for invalid letters, repeated commands, category selection,
+and hint usage. Feedback should describe actual player actions once.
+
+**Done when:** malformed input never changes game state and feedback is not duplicated.
+
+## Required testing
+
+Test repeated correct and incorrect guesses, hints, category changes, multiple rounds,
+streak resets, difficulty changes, invalid input, and quitting.
+
+
+## LLM usage
+
+You may use an LLM during the lab. The goal is to use it as a coding assistant while
+retaining responsibility for understanding and testing the result.
+
+- Inspect the existing code before asking for changes.
+- Ask for explanations when you do not understand a proposed change.
+- Test generated code against the stated behaviour and edge cases.
+- Keep your complete LLM chat history for submission.
+- Do not replace the whole project with an unrelated implementation.
+- Keep all state in memory; do not add CSV, JSON, SQLite, or other persistence.
+
+## Submission checklist
+
+- [ ] Task 1 completed and the original defect was reproduced and fixed.
+- [ ] Tasks 2–4 completed and tested.
+- [ ] Boundary and invalid-input cases tested.
+- [ ] No unnecessary external dependencies added.
+- [ ] No persistent storage added.
+- [ ] Code remains understandable and modular.
+- [ ] Complete LLM chat-history link included.
+
+## Folder structure
+
+```text
+scenario-04-hangman/
+├── README.md
+├── requirements.txt
+├── main.py
+├── game.py
+├── words.py
+└── stats.py
+```
+
+## Submission Checklist
+
+Submission is only the following three things:
+
+- [ ] A 10-second video of gameplay **before** your changes, showing the bug/broken behavior
+- [ ] A 10-second video of gameplay **after** your changes, showing the bug fixed and the new features working
+- [ ] The Chat/LLM used page link, with the complete chat history
